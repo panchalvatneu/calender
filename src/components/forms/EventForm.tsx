@@ -14,7 +14,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { Link } from "lucide-react";
+
 import { Switch } from "../ui/switch";
 import { StringDecoder } from "string_decoder";
 import { Textarea } from "../ui/textarea";
@@ -31,6 +31,7 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 import { useTransition } from "react";
+import Link from "next/link";
 
 export function EventForm({
   event,
@@ -188,10 +189,20 @@ export function EventForm({
               </AlertDialogContent>
             </AlertDialog>
           )}
-          <Button type="button" asChild variant="outline">
+          <Button
+            disabled={isDeletePending || form.formState.isSubmitting}
+            type="button"
+            asChild
+            variant="outline"
+          >
             <Link href="/events">Cancel</Link>
           </Button>
-          <Button type="submit">Save</Button>
+          <Button
+            disabled={isDeletePending || form.formState.isSubmitting}
+            type="submit"
+          >
+            Save
+          </Button>
         </div>
       </form>
     </Form>
